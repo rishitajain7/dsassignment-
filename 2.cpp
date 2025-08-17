@@ -1,32 +1,31 @@
 #include <iostream>
 using namespace std;
 
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }}}}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++)
+        cout<< arr[i] << " ";
+    cout<< endl;}
+
 int main() {
-    int arr[50];
-    int n;
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr) / sizeof(arr[0]);
 
-    cout << "Enter number of elements: ";
-    cin >> n;
+    cout<< "Original array as follows: ";
+    printArray(arr, n);
 
-    cout << "Enter " << n << " elements: "<<endl;
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
-    }
+    bubbleSort(arr, n);
 
-    for (int i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; ) {
-            if (arr[i] == arr[j]) {
-                for (int k = j; k < n - 1; k++) {
-                    arr[k] = arr[k + 1];}
-                n--; } 
-                else { j++;}
-        } }
-
-    cout << "Array after removing duplicates:"<<endl;
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
+    cout<< "Sorted array as follows: ";
+    printArray(arr, n);
 
     return 0;
 }
