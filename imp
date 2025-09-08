@@ -1,0 +1,106 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+#define MAX 5
+class queue{
+    int front;
+    int rear;
+    int arr[MAX];
+    
+public:
+queue(){
+    front =-1;
+    rear = -1;
+}
+bool isEmpty(){
+    return front == -1 || front >rear ;
+}
+bool isFull(){
+    return rear==MAX-1;
+}
+
+void enqueue(int value){
+    if(isFull()){
+        cout<<"queue is full"<<value<<endl;
+    }
+    if(isEmpty()){
+        cout<<"queue is empty"<<endl;
+    }
+    rear++;
+    arr[rear]=value;
+    cout<<"added to queue"<<endl;
+}
+
+void dequeue(){
+    if(isEmpty()){
+        cout<<"queue is empty,cannot delete"<<endl;
+    }
+    cout<<arr[front]<<"removed"<<endl;
+    q[front]="  ";
+    if(front==rear){
+        front=-1;
+        rear=-1;
+    }
+    else{ front++;}
+}
+
+int peek(){
+    if(isEmpty()){
+        cout<<"queue is empty"<<endl;
+        return -1;
+    }
+    return arr[front];
+}
+
+int display(){
+     if(isEmpty()){
+        cout<<"queue is empty"<<endl;
+        return -1;
+    }
+    cout<<"queue:";
+    for(int i=front;i<=rear;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<< endl;
+}
+};
+int main() {
+queue q;
+int choice;
+int value;
+
+do{
+    cout<<"    MENU   \n";
+    cout<<"1. enqueue (add)\n";
+    cout<<"2. dequeue (delete)\n";
+    cout<<"3. peek\n";
+    cout<<"4. display\n";
+    cout<<"enter choice; ";
+    cin>>choice;
+    
+    switch(choice){
+        case 1: 
+            cout<<"enter value to add: ";
+            cin>>value;
+            q.enqueue(value);
+            break;
+            
+        case 2:
+         q.dequeue();
+            break;
+            
+        case 3:
+            value=q.peek();
+            if(value!=-1){
+                cout<<"front element "<<value<<endl;
+            }
+            break;
+            
+        case 4:
+            q.display();
+            break;
+    }
+} while(choice!=4);
+    return 0 ;
+}
